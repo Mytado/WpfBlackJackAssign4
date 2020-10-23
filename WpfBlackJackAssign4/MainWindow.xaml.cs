@@ -24,5 +24,30 @@ namespace WpfBlackJackAssign4
         {
             InitializeComponent();
         }
+
+        private void newGameButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void shuffleButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void hitButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void standButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        public class testPlayer
+        {
+            public int playerId { get; set; }
+        }
     }
 }

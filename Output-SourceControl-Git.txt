@@ -1,0 +1,13 @@
+﻿Opening repositories:
+C:\Users\adolf\source\repos\WpfBlackJackAssign4
+Your branch is up to date with 'origin/master'.
+Switched to branch 'master'
+Checked out master
+Switched to branch 'wpf_my'
+Your branch is up to date with 'origin/wpf_my'.
+Checked out wpf_my
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
+Checked out master
+Switched to branch 'wpf_My'
+Checked out wpf_My
