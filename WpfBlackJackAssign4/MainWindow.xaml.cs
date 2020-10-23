@@ -27,22 +27,23 @@ namespace WpfBlackJackAssign4
 
         private void newGameButton_Click(object sender, RoutedEventArgs e)
         {
-
+            NewGameWindow newGameWindow = new NewGameWindow();
+            newGameWindow.ShowDialog();
         }
 
         private void shuffleButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("you clicked me at shuffle button");
         }
 
         private void hitButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("you clicked me at hit button");
         }
 
         private void standButton_Click(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("you clicked me at stand button");
         }
 
         public class testPlayer
