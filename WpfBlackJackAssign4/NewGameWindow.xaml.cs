@@ -23,6 +23,7 @@ namespace WpfBlackJackAssign4
     {
         private int nbrOfPlayers;
         private int nbrOfDecks;
+        private List<string> highscore = new List<string>();
 
         public NewGameWindow()
         {
@@ -51,6 +52,7 @@ namespace WpfBlackJackAssign4
 
             MessageBox.Show("Number of decks: " + nbrOfDecks +"\n Number of players: " + nbrOfPlayers);
             //alert bakåt med antal spelare och decks, trigger för att skapa spel
+
             if (isInputOkay)
             {
                 this.Close();

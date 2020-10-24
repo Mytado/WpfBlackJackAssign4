@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBlackJackAssign4"
         mc:Ignorable="d" FontSize="18" FontFamily="Segoe UI Light"
-        Title="Window1" Height="300" Width="400">
+        Title="New game" Height="300" Width="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20" />

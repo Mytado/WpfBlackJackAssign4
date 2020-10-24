@@ -21,6 +21,12 @@ namespace WpfBlackJackAssign4
     public partial class MainWindow : Window
     {
         private GameState gameState;
+        private testPlayer TestPlayer { get => this.TestPlayer; set => this.TestPlayer = value; }
+        private string winnerString;
+        private string currentPlayer;
+        private List<string> playerList = new List<string>();
+
+
         public MainWindow()
         {
             InitializeComponent();
@@ -31,8 +37,12 @@ namespace WpfBlackJackAssign4
         {
             NewGameWindow newGameWindow = new NewGameWindow();
             newGameWindow.ShowDialog();
+            setupGame(Int32.Parse(newGameWindow.playerNbrText.Text)); //refine, ersätt med data från backend?
             gameState = GameState.PLAY;
             enableButtons();
+
+            //test
+            
         }
 
         private void shuffleButton_Click(object sender, RoutedEventArgs e)
@@ -48,6 +58,25 @@ namespace WpfBlackJackAssign4
         private void standButton_Click(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void highscoreButton_Click(object sender, RoutedEventArgs e)
+        {
+            //
+            HighscoreWindow highscoreWindow = new HighscoreWindow();
+            highscoreWindow.ShowDialog();
+        }
+
+        private List<string> setupGame(int nbrOfPlayers)
+        {
+            int currentPlayerInt = 1;
+
+            for (int i = 0; i<nbrOfPlayers; i++)
+            {
+                playerList.Add(currentPlayer);
+                currentPlayerInt++;
+            }
+            return playerList;
         }
 
         private void enableButtons()
@@ -73,12 +102,21 @@ namespace WpfBlackJackAssign4
             enableButtons();
         }
 
+        private void updateGui()
+        {
+
+        }
+
         public class testPlayer
         {
             public int playerId { get; set; }
         }
 
+        private void gameOver()
+        {
+            //serialize results
+        }
 
-
+        
     }
 }
