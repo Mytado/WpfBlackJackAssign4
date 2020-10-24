@@ -9,6 +9,7 @@ namespace WpfBlackJackAssign4
     enum GameState
     {
         PLAY, 
-        WAIT
+        WAIT,
+        GAMEOVER
     }
 }

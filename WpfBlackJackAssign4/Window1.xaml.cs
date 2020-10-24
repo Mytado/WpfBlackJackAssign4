@@ -1,16 +1,9 @@
-﻿using System;
+﻿using CardDLL;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace WpfBlackJackAssign4
 {
@@ -22,34 +15,42 @@ namespace WpfBlackJackAssign4
 
         public List<TestResultHighscore> testHigshscoreList { get; set; }
 
-        public HighscoreWindow()
+        public HighscoreWindow(List<Player> Players)
         {
             InitializeComponent();
 
             testHigshscoreList = new List<TestResultHighscore>();
 
-            TestResultHighscore t1 = new TestResultHighscore
+
+            foreach(Player p in Players)
             {
-                Id = "1",
-                Losses = "0",
-                Wins = "4"
-            };
-
-            TestResultHighscore t2 = new TestResultHighscore
-            {
-                Id = "4",
-                Losses = "9",
-                Wins = "2"
-            };
-
-            testHigshscoreList.Add(t1);
-            testHigshscoreList.Add(t2);
-
+                testHigshscoreList.Add(new TestResultHighscore
+                {
+                    Id = p.PlayerID.ToString(),
+                    Name = p.Name,
+                    Wins = p.wins.ToString(),
+                    Losses = p.losses.ToString()
+                }) ; ;
+            }
             DataContext = this;
 
 
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
+            var ofd = new SaveFileDialog();
+            ofd.Filter = "TXT files (*.txt)|*.txt";
+            ofd.RestoreDirectory = true;
+            ofd.InitialDirectory = Directory.GetParent(Environment.CurrentDirectory).Parent.FullName + "\\DataFiles\\";
+
+            if (ofd.ShowDialog() == true)
+            {
+                UtilitiesLib.Serialize<TestResultHighscore>.BinarySaveList(ofd.FileName, testHigshscoreList);
             }
 
-
+            
         }
     }
+}

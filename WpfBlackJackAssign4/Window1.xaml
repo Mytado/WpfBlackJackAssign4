@@ -5,12 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBlackJackAssign4"
         mc:Ignorable="d" FontSize="18" FontFamily="Segoe UI Light"
-        Title="Highscore" Height="350" Width="400">
+        Title="Highscore" Height="350" Width="413.135">
+    
     <Grid>
-        <ListView ItemsSource="{Binding testHigshscoreList}">
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="_File">
+                    <MenuItem Header="_Save" Click="MenuItem_Click" />
+                </MenuItem>
+            </Menu>
+            <TextBox AcceptsReturn="True" />
+        </DockPanel>
+        <ListView ItemsSource="{Binding testHigshscoreList}" Margin="0,19,0,0">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Player id" Width="100"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Name}" Header="Name" Width="100"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Wins}" Header="Wins" Width="100"></GridViewColumn>
                     <GridViewColumn DisplayMemberBinding="{Binding Losses}" Header="Losses" Width="100"></GridViewColumn>
                 </GridView>

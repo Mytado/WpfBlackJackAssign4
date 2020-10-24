@@ -66,8 +66,10 @@
         <!-- all buttons-->
         <Button x:Name="highscoreButton" Content="Highscore"
                 Grid.Column="11" Grid.Row="1" Margin="5" Click="highscoreButton_Click"/>
+        <Button x:Name ="newTurnButton" Content="New Turn"
+                Grid.Column="11" Grid.Row="4" Margin="5" Click="newTurnButton_Click_1" IsEnabled="False"/>
         <Button x:Name ="newGameButton" Content="New Game"
-                Grid.Column="11" Grid.Row="4" Margin="5" Click="newGameButton_Click"/>
+                Grid.Column="10" Grid.Row="1" Margin="5" Click="newGameButton_Click"/>
         <Button x:Name ="shuffleButton" Content="Shuffle"
                 Grid.Column="11" Grid.Row="5" Margin="5" IsEnabled="False" Click="shuffleButton_Click"/>
         <Button x:Name ="hitButton" Content="Hit"
@@ -76,18 +78,18 @@
                 Grid.Column="11" Grid.Row="7" Margin="5" IsEnabled="False" Click="standButton_Click"/>
 
         <!--card pictures left-->
-        <Image Name="CardL5" Source="pictures/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,18,15,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
-        <Image Name="CardL4" Source="pictures/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,105,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
-        <Image Name="CardL3" Source="pictures/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,195,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
-        <Image Name="CardL2" Source="pictures/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,285,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
-        <Image Name="CardL1" Source="pictures/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="10,10,370,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardL5" Source="Cards/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,18,15,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardL4" Source="Cards/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,105,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardL3" Source="Cards/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,195,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardL2" Source="Cards/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,285,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardL1" Source="Cards/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="10,10,370,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
 
         <!--card pictures right-->
-        <Image Name="CardR5" Source="pictures/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,18,15,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
-        <Image Name="CardR4" Source="pictures/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,105,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
-        <Image Name="CardR3" Source="pictures/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,195,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
-        <Image Name="CardR2" Source="pictures/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,285,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
-        <Image Name="CardR1" Source="pictures/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,370,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardR5" Source="Cards/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,18,15,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardR4" Source="Cards/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,105,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardR3" Source="Cards/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,195,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardR2" Source="Cards/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,285,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardR1" Source="Cards/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,370,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
 
     </Grid>
 </Window>
