@@ -69,7 +69,23 @@ namespace WpfBlackJackAssign4
         private void highscoreButton_Click(object sender, RoutedEventArgs e)
         {
             //
-            HighscoreWindow highscoreWindow = new HighscoreWindow();
+
+            List<TestResultHighscore> testHigshscoreList = new List<TestResultHighscore>();
+
+            TestResultHighscore t1 = new TestResultHighscore();
+            t1.Id = "1";
+            t1.Losses = "0";
+            t1.Wins = "4";
+
+            TestResultHighscore t2 = new TestResultHighscore();
+            t2.Id = "4";
+            t2.Losses = "9";
+            t2.Wins = "2";
+
+            testHigshscoreList.Add(t1);
+            testHigshscoreList.Add(t2);
+
+            HighscoreWindow highscoreWindow = new HighscoreWindow(testHigshscoreList);
             highscoreWindow.ShowDialog();
         }
 

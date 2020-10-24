@@ -5,30 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBlackJackAssign4"
         mc:Ignorable="d" FontSize="18" FontFamily="Segoe UI Light"
-        Title="Highscore" Height="350" Width="300">
+        Title="Highscore" Height="350" Width="400">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="auto" />
-            <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="20" />
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
-            </Grid.RowDefinitions>
-        <ListBox Margin="20" Name="HighscoreListBox">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding highscore}" />
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <ListView ItemsSource="{Binding listToDisplay}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Player id" Width="100"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Wins}" Header="Wins" Width="100"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Losses}" Header="Losses" Width="100"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

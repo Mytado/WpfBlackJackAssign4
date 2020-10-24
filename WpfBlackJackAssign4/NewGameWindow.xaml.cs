@@ -23,7 +23,6 @@ namespace WpfBlackJackAssign4
     {
         private int nbrOfPlayers;
         private int nbrOfDecks;
-        private List<string> highscore = new List<string>();
 
         public NewGameWindow()
         {
