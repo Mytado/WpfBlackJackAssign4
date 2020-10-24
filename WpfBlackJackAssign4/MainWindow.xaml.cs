@@ -43,6 +43,7 @@ namespace WpfBlackJackAssign4
             setupGame(Int32.Parse(newGameWindow.playerNbrText.Text), Int32.Parse(newGameWindow.deckNbrText.Text)); //refine, ersätt med data från backend?
             gameState = GameState.PLAY;
             enableButtons();
+            firstRound();
 
         }
 
@@ -58,7 +59,13 @@ namespace WpfBlackJackAssign4
 
         private void hitButton_Click(object sender, RoutedEventArgs e)
         {
-    
+            string card = "10C";
+            Uri fileUri = new Uri("/pictures/10C.png", UriKind.Relative);
+            CardL1.Source = new BitmapImage(fileUri);
+
+            // "/WpfBlackJackAssign4;component/pictures/10C.png
+
+
         }
 
         private void standButton_Click(object sender, RoutedEventArgs e)
@@ -68,24 +75,7 @@ namespace WpfBlackJackAssign4
 
         private void highscoreButton_Click(object sender, RoutedEventArgs e)
         {
-            //
-
-            List<TestResultHighscore> testHigshscoreList = new List<TestResultHighscore>();
-
-            TestResultHighscore t1 = new TestResultHighscore();
-            t1.Id = "1";
-            t1.Losses = "0";
-            t1.Wins = "4";
-
-            TestResultHighscore t2 = new TestResultHighscore();
-            t2.Id = "4";
-            t2.Losses = "9";
-            t2.Wins = "2";
-
-            testHigshscoreList.Add(t1);
-            testHigshscoreList.Add(t2);
-
-            HighscoreWindow highscoreWindow = new HighscoreWindow(testHigshscoreList);
+            HighscoreWindow highscoreWindow = new HighscoreWindow();
             highscoreWindow.ShowDialog();
         }
 
@@ -138,6 +128,22 @@ namespace WpfBlackJackAssign4
             {
                 winnerTextBlock.Text = "The dealer is the winner!";
             }
+        }
+
+        private void firstRound()
+        {
+            //set up dealers cards
+            string dCardL1 = "4D"; //get card
+            Uri fileUriL1 = new Uri($"/pictures/1{dCardL1}.png", UriKind.Relative);
+            CardL1.Source = new BitmapImage(fileUriL1);
+           /* Uri fileUriL2 = new Uri("/pictures/8C.png", UriKind.Relative);
+            CardL2.Source = new BitmapImage(fileUriL2);*/
+
+            //set up players cards
+            Uri fileUriR1 = new Uri("/pictures/4HC.png", UriKind.Relative);
+            CardR1.Source = new BitmapImage(fileUriR1);
+           /* Uri fileUriR2 = new Uri("/pictures/9S.png", UriKind.Relative);
+            CardR2.Source = new BitmapImage(fileUriR2);*/
         }
     }
 }

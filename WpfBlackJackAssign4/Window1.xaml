@@ -7,7 +7,7 @@
         mc:Ignorable="d" FontSize="18" FontFamily="Segoe UI Light"
         Title="Highscore" Height="350" Width="400">
     <Grid>
-        <ListView ItemsSource="{Binding listToDisplay}">
+        <ListView ItemsSource="{Binding testHigshscoreList}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Id}" Header="Player id" Width="100"></GridViewColumn>

@@ -20,12 +20,30 @@ namespace WpfBlackJackAssign4
     public partial class HighscoreWindow : Window
     {
 
-        List<TestResultHighscore> listToDisplay = new List<TestResultHighscore>();
-        public HighscoreWindow(List<TestResultHighscore> listToDisplay)
+        public List<TestResultHighscore> testHigshscoreList { get; set; }
+
+        public HighscoreWindow()
         {
             InitializeComponent();
 
-            this.listToDisplay = listToDisplay;
+            testHigshscoreList = new List<TestResultHighscore>();
+
+            TestResultHighscore t1 = new TestResultHighscore
+            {
+                Id = "1",
+                Losses = "0",
+                Wins = "4"
+            };
+
+            TestResultHighscore t2 = new TestResultHighscore
+            {
+                Id = "4",
+                Losses = "9",
+                Wins = "2"
+            };
+
+            testHigshscoreList.Add(t1);
+            testHigshscoreList.Add(t2);
 
             DataContext = this;
 
