@@ -45,6 +45,7 @@ namespace WpfBlackJackAssign4
             enableButtons();
             firstRound();
 
+
         }
 
         private void updatePlayerRound(string playerId)
@@ -128,22 +129,24 @@ namespace WpfBlackJackAssign4
             {
                 winnerTextBlock.Text = "The dealer is the winner!";
             }
+
+            //add to xml data
         }
 
         private void firstRound()
         {
             //set up dealers cards
             string dCardL1 = "4D"; //get card
-            Uri fileUriL1 = new Uri($"/pictures/1{dCardL1}.png", UriKind.Relative);
+            Uri fileUriL1 = new Uri($"/pictures/{dCardL1}.png", UriKind.Relative);
             CardL1.Source = new BitmapImage(fileUriL1);
-           /* Uri fileUriL2 = new Uri("/pictures/8C.png", UriKind.Relative);
-            CardL2.Source = new BitmapImage(fileUriL2);*/
+            Uri fileUriL2 = new Uri("/pictures/8C.png", UriKind.Relative);
+            CardL2.Source = new BitmapImage(fileUriL2);
 
             //set up players cards
-            Uri fileUriR1 = new Uri("/pictures/4HC.png", UriKind.Relative);
+            Uri fileUriR1 = new Uri("/pictures/4H.png", UriKind.Relative);
             CardR1.Source = new BitmapImage(fileUriR1);
-           /* Uri fileUriR2 = new Uri("/pictures/9S.png", UriKind.Relative);
-            CardR2.Source = new BitmapImage(fileUriR2);*/
+            Uri fileUriR2 = new Uri("/pictures/9S.png", UriKind.Relative);
+            CardR2.Source = new BitmapImage(fileUriR2);
         }
     }
 }
