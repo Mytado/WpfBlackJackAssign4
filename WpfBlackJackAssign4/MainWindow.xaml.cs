@@ -21,8 +21,6 @@ namespace WpfBlackJackAssign4
     public partial class MainWindow : Window
     {
         private GameState gameState;
-        private testPlayer TestPlayer { get => this.TestPlayer; set => this.TestPlayer = value; }
-        private string winnerString;
         private string currentPlayer;
         private List<string> playerList = new List<string>();
 
@@ -35,14 +33,22 @@ namespace WpfBlackJackAssign4
 
         private void newGameButton_Click(object sender, RoutedEventArgs e)
         {
+            playerIdTextBlock.Text = "";
+            playerScoreTextBlock.Text = "";
+            deckTextBlock.Text = "";
+            dealerScoreTextBlock.Text = "";
+            playerNbrTextBlock.Text = "";
             NewGameWindow newGameWindow = new NewGameWindow();
             newGameWindow.ShowDialog();
-            setupGame(Int32.Parse(newGameWindow.playerNbrText.Text)); //refine, ersätt med data från backend?
+            setupGame(Int32.Parse(newGameWindow.playerNbrText.Text), Int32.Parse(newGameWindow.deckNbrText.Text)); //refine, ersätt med data från backend?
             gameState = GameState.PLAY;
             enableButtons();
 
-            //test
-            
+        }
+
+        private void updatePlayerRound(string playerId)
+        {
+            playerIdTextBlock.Text = playerId;
         }
 
         private void shuffleButton_Click(object sender, RoutedEventArgs e)
@@ -52,12 +58,12 @@ namespace WpfBlackJackAssign4
 
         private void hitButton_Click(object sender, RoutedEventArgs e)
         {
-            
+    
         }
 
         private void standButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            gameOver("dealer", false);
         }
 
         private void highscoreButton_Click(object sender, RoutedEventArgs e)
@@ -67,15 +73,18 @@ namespace WpfBlackJackAssign4
             highscoreWindow.ShowDialog();
         }
 
-        private List<string> setupGame(int nbrOfPlayers)
+        private List<string> setupGame(int nbrOfPlayers, int nbrOfDecks)
         {
             int currentPlayerInt = 1;
+            playerNbrTextBlock.Text = nbrOfPlayers.ToString();
+            deckTextBlock.Text = nbrOfDecks.ToString();
 
             for (int i = 0; i<nbrOfPlayers; i++)
             {
                 playerList.Add(currentPlayer);
                 currentPlayerInt++;
             }
+
             return playerList;
         }
 
@@ -102,21 +111,17 @@ namespace WpfBlackJackAssign4
             enableButtons();
         }
 
-        private void updateGui()
-        {
-
-        }
-
-        public class testPlayer
-        {
-            public int playerId { get; set; }
-        }
-
-        private void gameOver()
+        private void gameOver(string winner, bool isPlayerWinner) //eller int?
         {
             //serialize results
-        }
 
-        
+            if (isPlayerWinner)
+            {
+                winnerTextBlock.Text = $"Player {winner} is the winner!";
+            } else
+            {
+                winnerTextBlock.Text = "The dealer is the winner!";
+            }
+        }
     }
 }

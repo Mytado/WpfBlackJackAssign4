@@ -48,9 +48,6 @@ namespace WpfBlackJackAssign4
                 playerNbrText.Text = "";
             }
 
-            
-
-            MessageBox.Show("Number of decks: " + nbrOfDecks +"\n Number of players: " + nbrOfPlayers);
             //alert bakåt med antal spelare och decks, trigger för att skapa spel
 
             if (isInputOkay)
