@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using CardDLL;
 
 namespace WpfBlackJackAssign4
 {
@@ -21,8 +22,10 @@ namespace WpfBlackJackAssign4
     public partial class MainWindow : Window
     {
         private GameState gameState;
-        private string currentPlayer;
-        private List<string> playerList = new List<string>();
+        private int currentPlayer;
+        //private List<string> playerList = new List<string>();
+        private List<Player> Players = new List<Player>();
+        private Deck CardDeck;
 
 
         public MainWindow()
@@ -79,19 +82,27 @@ namespace WpfBlackJackAssign4
             highscoreWindow.ShowDialog();
         }
 
-        private List<string> setupGame(int nbrOfPlayers, int nbrOfDecks)
+        private List<Player> setupGame(int nbrOfPlayers, int nbrOfDecks)
         {
+            CardDeck = new Deck(nbrOfDecks);
+            for(int i = 0; i < nbrOfPlayers; i++)
+            {
+                Hand hand = new Hand();
+                for (int j = 0; j < 5; j++)
+                {
+                    hand.AddCard(CardDeck);
+                }
+                Players.Add(new Player(false, "Namn", i));
+                Players.ElementAt(i).hand = hand;
+            }
+
+
+
             int currentPlayerInt = 1;
             playerNbrTextBlock.Text = nbrOfPlayers.ToString();
             deckTextBlock.Text = nbrOfDecks.ToString();
 
-            for (int i = 0; i<nbrOfPlayers; i++)
-            {
-                playerList.Add(currentPlayer);
-                currentPlayerInt++;
-            }
-
-            return playerList;
+            return Players;
         }
 
         private void enableButtons()
@@ -132,9 +143,10 @@ namespace WpfBlackJackAssign4
 
         private void firstRound()
         {
+            currentPlayer = 0;
             //set up dealers cards
-            string dCardL1 = "4D"; //get card
-            Uri fileUriL1 = new Uri($"/pictures/1{dCardL1}.png", UriKind.Relative);
+            string dCardL1 = Players.ElementAt(currentPlayer).hand.cards.ElementAt(0).ToString(); //get card
+            Uri fileUriL1 = new Uri($"/pictures/{dCardL1}.png", UriKind.Relative);
             CardL1.Source = new BitmapImage(fileUriL1);
            /* Uri fileUriL2 = new Uri("/pictures/8C.png", UriKind.Relative);
             CardL2.Source = new BitmapImage(fileUriL2);*/
