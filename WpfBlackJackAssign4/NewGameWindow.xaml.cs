@@ -29,8 +29,10 @@ namespace WpfBlackJackAssign4
             InitializeComponent();
         }
 
+        //window that shows up after pressing "new game" button in MainWindow that allows the player to enter valid information that's required.
         private void startGameButton_Click(object sender, RoutedEventArgs e)
         {
+            Boolean isInputOkay = true;
 
             try
             {
@@ -39,17 +41,21 @@ namespace WpfBlackJackAssign4
 
             } catch (Exception)
             {
-                MessageBox.Show("you done fucked up");
+                isInputOkay = false;
+                MessageBox.Show("Please enter valid numbers");
+                deckNbrText.Text = "";
+                playerNbrText.Text = "";
             }
 
             
 
-            MessageBox.Show("Number of decks: " + nbrOfDecks +"/n Number of players: " + nbrOfPlayers);
+            MessageBox.Show("Number of decks: " + nbrOfDecks +"\n Number of players: " + nbrOfPlayers);
             //alert bakåt med antal spelare och decks, trigger för att skapa spel
+            if (isInputOkay)
+            {
+                this.Close();
+            }
 
-            this.Close();
-
-            
 
         }
     }

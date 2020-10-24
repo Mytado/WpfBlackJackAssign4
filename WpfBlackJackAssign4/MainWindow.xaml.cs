@@ -20,35 +20,65 @@ namespace WpfBlackJackAssign4
     /// </summary>
     public partial class MainWindow : Window
     {
+        private GameState gameState;
         public MainWindow()
         {
             InitializeComponent();
+            gameState = GameState.WAIT;
         }
 
         private void newGameButton_Click(object sender, RoutedEventArgs e)
         {
             NewGameWindow newGameWindow = new NewGameWindow();
             newGameWindow.ShowDialog();
+            gameState = GameState.PLAY;
+            enableButtons();
         }
 
         private void shuffleButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("you clicked me at shuffle button");
+            //what to do?
         }
 
         private void hitButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("you clicked me at hit button");
+            
         }
 
         private void standButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("you clicked me at stand button");
+            
+        }
+
+        private void enableButtons()
+        {
+            if (gameState == GameState.PLAY)
+            {
+                hitButton.IsEnabled = true;
+                standButton.IsEnabled = true;
+                shuffleButton.IsEnabled = true;
+            }
+
+            if (gameState == GameState.WAIT)
+            {
+                hitButton.IsEnabled = false;
+                standButton.IsEnabled = false;
+                shuffleButton.IsEnabled = false;
+            }
+        }
+
+        private void dealersRound()
+        {
+            gameState = GameState.WAIT;
+            enableButtons();
         }
 
         public class testPlayer
         {
             public int playerId { get; set; }
         }
+
+
+
     }
 }

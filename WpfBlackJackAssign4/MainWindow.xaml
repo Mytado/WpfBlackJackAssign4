@@ -45,10 +45,10 @@
         <Button x:Name ="newGameButton" Content="New Game"
                 Grid.Column="3" Grid.Row="3" Margin="5" Click="newGameButton_Click"/>
         <Button x:Name ="shuffleButton" Content="Shuffle"
-                Grid.Column="3" Grid.Row="4" Margin="5" Click="shuffleButton_Click"/>
+                Grid.Column="3" Grid.Row="4" Margin="5" IsEnabled="False" Click="shuffleButton_Click"/>
         <Button x:Name ="hitButton" Content="Hit"
-                Grid.Column="3" Grid.Row="5" Margin="5" Click="hitButton_Click"/>
+                Grid.Column="3" Grid.Row="5" Margin="5" IsEnabled="False" Click="hitButton_Click"/>
         <Button x:Name ="standButton" Content="Stand"
-                Grid.Column="3" Grid.Row="6" Margin="5" Click="standButton_Click"/>
+                Grid.Column="3" Grid.Row="6" Margin="5" IsEnabled="False" Click="standButton_Click"/>
     </Grid>
 </Window>
