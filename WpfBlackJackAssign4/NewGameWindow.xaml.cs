@@ -32,7 +32,6 @@ namespace WpfBlackJackAssign4
         private void startGameButton_Click(object sender, RoutedEventArgs e)
         {
 
-
             try
             {
                 nbrOfDecks = Int32.Parse(deckNbrText.Text);
@@ -46,7 +45,9 @@ namespace WpfBlackJackAssign4
             
 
             MessageBox.Show("Number of decks: " + nbrOfDecks +"/n Number of players: " + nbrOfPlayers);
-            //alert bakåt med antal spelare och decks vad som 
+            //alert bakåt med antal spelare och decks, trigger för att skapa spel
+
+            this.Close();
 
             
 

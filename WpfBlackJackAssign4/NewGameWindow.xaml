@@ -32,6 +32,19 @@
                    Margin="0,0,0,5"/>
         <TextBox x:Name="playerNbrText" Grid.Column="1" Grid.Row="4" Width="150" Margin="0,0,0,50"/>
         <Button x:Name="startGameButton" Content="Start game" 
-                Grid.Column="1" Grid.Row="5" Margin="10" Click="startGameButton_Click"/>
+                Grid.Column="1" Grid.Row="5" Margin="10" Click="startGameButton_Click">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=deckNbrText, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding Text.Length, ElementName=playerNbrText, UpdateSourceTrigger=PropertyChanged}" Value="0">
+                            <Setter Property="IsEnabled" Value="False"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
     </Grid>
 </Window>
