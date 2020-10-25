@@ -10,10 +10,6 @@ using Microsoft.VisualBasic;
 namespace WpfBlackJackAssign4
 {
 
-    public delegate bool LessThanSeventeen();
-    public delegate bool LessThanTwentyOne();
-
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -53,7 +49,6 @@ namespace WpfBlackJackAssign4
             noOfPlayers = Int32.Parse(newGameWindow.playerNbrText.Text);
             noOfDecks = Int32.Parse(newGameWindow.deckNbrText.Text);
             setupGame(true); //refine, ersätt med data från backend?
-
         }
 
         private void updatePlayerRound(string playerId)
@@ -92,11 +87,16 @@ namespace WpfBlackJackAssign4
             {
                 DonePlayers[currentPlayer] = true;
                 UpdateCardGraphics();
-                MessageBox.Show("Bust");
+                Bust(Players.ElementAt(currentPlayer).Name);
                 NextPlayer();
             }
             else UpdateGame();
         }
+
+        Action<string> Bust = name =>
+        {
+            MessageBox.Show($"{name} is bust");
+        };
 
         private void NextPlayer()
         {
@@ -233,8 +233,6 @@ namespace WpfBlackJackAssign4
 
         private void UpdateGame()
         {
-
-
             if (DonePlayers[currentPlayer])
             {
                 hitButton.IsEnabled = false;
@@ -262,7 +260,6 @@ namespace WpfBlackJackAssign4
                 UpdateCardGraphics();
                 if (gameState != GameState.GAMEOVER)
                 {
-
                     gameState = GameState.GAMEOVER;
                 }
             }
