@@ -4,9 +4,92 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfBlackJackAssign4"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" FontSize="20" FontFamily="Segoe UI Light"
+        Title="Black Jack" Height="700" Width="1200">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+
+        </Grid.RowDefinitions>
         
+        <!--all textblocks-->
+        <TextBlock Grid.Column="1" Grid.Row="1" FontSize="22" Text="Decks: "
+                   Margin="0,0,0,5"/>
+        <TextBlock x:Name="deckTextBlock" Grid.Column="2" Grid.Row="1" FontSize="22"/>
+        <TextBlock Grid.Column="1" Grid.Row="2" FontSize="22" Text="Players: " Margin="0,0,0,350"/>
+        <TextBlock x:Name="playerNbrTextBlock" Grid.Column="2" Grid.Row="2" FontSize="22"/>
+        <TextBlock Grid.Column="1" Grid.Row="6" FontSize="22" Text="Dealer"
+                   Margin="5"/>
+        <TextBlock Grid.Column="1" Grid.Row="7" FontSize="22" Text="Score: " Margin="5"/>
+        <TextBlock x:Name="dealerScoreTextBlock" Grid.Column="2" Grid.Row="7" FontSize="22"/>
+
+        <TextBlock x:Name="winnerTextBlock" Grid.Column="6" Grid.Row="1" FontSize="25" Text=""
+                   Margin="5"/>
+        
+        
+        <TextBlock Grid.Column="6" Grid.Row="6" FontSize="22" Text="Player: " 
+                   Margin="5"/>
+        <TextBlock x:Name="playerIdTextBlock" Grid.Column="7" Grid.Row="6" FontSize="22"/>
+        <TextBlock Grid.Column="6" Grid.Row="7" FontSize="22" Text="Score: " Margin="5"/>
+        <TextBlock x:Name="playerScoreTextBlock" Grid.Column="7" Grid.Row="7" FontSize="22"/>
+
+
+        <!-- all buttons-->
+        <Button x:Name="highscoreButton" Content="Highscore"
+                Grid.Column="11" Grid.Row="1" Margin="5" Click="highscoreButton_Click"/>
+        <Button x:Name ="newTurnButton" Content="New Turn"
+                Grid.Column="11" Grid.Row="4" Margin="5" Click="newTurnButton_Click_1" IsEnabled="False"/>
+        <Button x:Name ="newGameButton" Content="New Game"
+                Grid.Column="10" Grid.Row="1" Margin="5" Click="newGameButton_Click"/>
+        <Button x:Name ="shuffleButton" Content="Shuffle"
+                Grid.Column="11" Grid.Row="5" Margin="5" IsEnabled="False" Click="shuffleButton_Click"/>
+        <Button x:Name ="hitButton" Content="Hit"
+                Grid.Column="11" Grid.Row="6" Margin="5" IsEnabled="False" Click="hitButton_Click"/>
+        <Button x:Name ="standButton" Content="Stand"
+                Grid.Column="11" Grid.Row="7" Margin="5" IsEnabled="False" Click="standButton_Click"/>
+
+        <!--card pictures left-->
+        <Image Name="CardL5" Source="Cards/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,18,15,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardL4" Source="Cards/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,105,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardL3" Source="Cards/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,195,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardL2" Source="Cards/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,285,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardL1" Source="Cards/purple_back.png" Grid.Column="1" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="10,10,370,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+
+        <!--card pictures right-->
+        <Image Name="CardR5" Source="Cards/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,18,15,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardR4" Source="Cards/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,105,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardR3" Source="Cards/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,195,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardR2" Source="Cards/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,285,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+        <Image Name="CardR1" Source="Cards/purple_back.png" Grid.Column="6" Grid.ColumnSpan="5" Grid.RowSpan="4" HorizontalAlignment="Right" Height="230" Margin="0,10,370,0" Grid.Row="2" VerticalAlignment="Bottom" Width="146"/>
+
     </Grid>
 </Window>
