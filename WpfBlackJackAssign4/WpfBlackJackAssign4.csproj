@@ -62,6 +62,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DLLs\Card.cs" />
+    <Compile Include="DLLs\Dealer.cs" />
+    <Compile Include="DLLs\Deck.cs" />
+    <Compile Include="DLLs\Hand.cs" />
+    <Compile Include="DLLs\Player.cs" />
     <Compile Include="TestResultHighscore.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="NewGameWindow.xaml.cs">
@@ -172,5 +177,6 @@
     <Resource Include="Cards\9S.png" />
     <Resource Include="Cards\purple_back.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

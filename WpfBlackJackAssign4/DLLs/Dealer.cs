@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CardDLL
+namespace DemoCardDLL
 {
     public delegate void Notify();
 

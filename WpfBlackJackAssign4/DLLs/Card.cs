@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Media.Imaging;
 
-namespace CardDLL
+namespace DemoCardDLL
 {
     public class Card
     {
