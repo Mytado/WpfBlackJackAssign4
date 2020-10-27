@@ -12,6 +12,7 @@ namespace WpfBlackJackAssign4
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
+    /// By My and Henrik
     /// </summary>
     public partial class MainWindow : Window
     {
