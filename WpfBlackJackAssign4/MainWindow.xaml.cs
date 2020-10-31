@@ -9,7 +9,6 @@ using Microsoft.VisualBasic;
 
 namespace WpfBlackJackAssign4
 {
-
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// By My and Henrik
@@ -23,7 +22,6 @@ namespace WpfBlackJackAssign4
         private bool[] DonePlayers;
         private Dealer dealer;
         private Deck CardDeck;
-        private bool DealerIsDone = false;
 
         private int noOfPlayers;
         private int noOfDecks;
@@ -194,7 +192,6 @@ namespace WpfBlackJackAssign4
             dealerCardImages[4] = CardL5;
 
             gameState = GameState.PLAY;
-            DealerIsDone = false;
             enableButtons();
             firstRound();
         }
