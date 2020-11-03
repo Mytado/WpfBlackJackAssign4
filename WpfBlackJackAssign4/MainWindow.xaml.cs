@@ -126,6 +126,8 @@ namespace WpfBlackJackAssign4
         {
             if (Players.Count > 0)
             {
+
+                //needs to change so that it can show players from db and not only after a game
                 HighscoreWindow highscoreWindow = new HighscoreWindow(Players);
                 highscoreWindow.ShowDialog();
             }
@@ -168,6 +170,8 @@ namespace WpfBlackJackAssign4
                     while (playerName.Equals(""))
                     {
                         playerName = Interaction.InputBox("Please submit a name for player " + (i + 1).ToString() + ".", "Player" + (i + 1).ToString() + " name", "Player " + (i + 1).ToString());
+                        //check if player name is unique
+                        //else MessageBox.Show("Player name is already taken, please enter a new one");
                     }
                     Players.Add(new Player(playerName, i + 1));
                 }
@@ -230,6 +234,8 @@ namespace WpfBlackJackAssign4
             playerIdTextBlock.Text = (currentPlayer + 1).ToString();
             playerScoreTextBlock.Text = Players.ElementAt(currentPlayer).hand.Score.ToString();
             dealerScoreTextBlock.Text = dealer.hand.Score.ToString();
+            //ADD STUFF
+            //currencyAmountNbrTextBlock.Text = get moneyamount from bank
         }
 
         private void UpdateGame()
@@ -324,6 +330,20 @@ namespace WpfBlackJackAssign4
         private void newTurnButton_Click_1(object sender, RoutedEventArgs e)
         {
             setupGame(false);
+        }
+
+        private void betButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                int betAmount = Int32.Parse(amountNbrTextBox.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please enter valid digits");
+            }
+
+            //call on bet functionality in db dll
         }
     }
 }

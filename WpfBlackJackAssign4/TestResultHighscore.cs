@@ -14,5 +14,6 @@ namespace WpfBlackJackAssign4
         public string Wins { get; set; }
         public string Losses { get; set; }
         public string Name { get; set; }
+        public int BankedAmount { get; set; }
     }
 }

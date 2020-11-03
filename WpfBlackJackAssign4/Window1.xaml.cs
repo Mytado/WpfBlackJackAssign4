@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
+using UtilitiesLib;
 
 namespace WpfBlackJackAssign4
 {
@@ -30,6 +31,8 @@ namespace WpfBlackJackAssign4
                     Name = p.Name,
                     Wins = p.wins.ToString(),
                     Losses = p.losses.ToString()
+                    //add banked amount
+
                 }) ; ;
             }
             DataContext = this;
@@ -47,7 +50,7 @@ namespace WpfBlackJackAssign4
 
             if (ofd.ShowDialog() == true)
             {
-                UtilitiesLib.Serialize<TestResultHighscore>.BinarySaveList(ofd.FileName, testHigshscoreList);
+               // UtilitiesLib.Serialize<TestResultHighscore>.BinarySaveList(ofd.FileName, testHigshscoreList);
             }
 
             
