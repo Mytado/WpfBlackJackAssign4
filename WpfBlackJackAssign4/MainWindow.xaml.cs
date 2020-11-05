@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Media.Imaging;
 using CardDLL;
 using Microsoft.VisualBasic;
+using System.Windows.Media.Imaging;
 
 namespace WpfBlackJackAssign4
 {
@@ -20,6 +20,7 @@ namespace WpfBlackJackAssign4
         private int currentPlayer;
         //private List<string> playerList = new List<string>();
         private List<Player> Players = new List<Player>();
+        private int[] Bets;
         private bool[] DonePlayers;
         private Dealer dealer;
         private Deck CardDeck;
@@ -40,6 +41,7 @@ namespace WpfBlackJackAssign4
 
         private void newGameButton_Click(object sender, RoutedEventArgs e)
         {
+
             playerIdTextBlock.Text = "";
             playerScoreTextBlock.Text = "";
             deckTextBlock.Text = "";
@@ -49,6 +51,7 @@ namespace WpfBlackJackAssign4
             newGameWindow.ShowDialog();
             noOfPlayers = Int32.Parse(newGameWindow.playerNbrText.Text);
             noOfDecks = Int32.Parse(newGameWindow.deckNbrText.Text);
+            Bets = new int[noOfPlayers];
             setupGame(true); //refine, ersätt med data från backend?
         }
 
@@ -64,6 +67,7 @@ namespace WpfBlackJackAssign4
 
         private void hitButton_Click(object sender, RoutedEventArgs e)
         {
+            betButton.IsEnabled = false;
             int flippedCards = 0;
             foreach (Card c in Players.ElementAt(currentPlayer).hand.cards)
             {
@@ -103,6 +107,12 @@ namespace WpfBlackJackAssign4
         {
             if (currentPlayer + 1 < Players.Count)
             {
+                betButton.IsEnabled = true;
+                amountNbrTextBox.IsReadOnly = false;
+                amountNbrTextBox.Text = "0";
+                BetAmount.Text = "Amount to bet: ";
+
+
                 currentPlayer++;
                 hitButton.IsEnabled = true;
                 standButton.IsEnabled = true;
@@ -124,13 +134,8 @@ namespace WpfBlackJackAssign4
 
         private void highscoreButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Players.Count > 0)
-            {
-
-                //needs to change so that it can show players from db and not only after a game
-                HighscoreWindow highscoreWindow = new HighscoreWindow(Players);
-                highscoreWindow.ShowDialog();
-            }
+            HighscoreWindow highscoreWindow = new HighscoreWindow();
+            highscoreWindow.ShowDialog();
         }
 
         public void dealer_DealerIsDone()
@@ -143,7 +148,7 @@ namespace WpfBlackJackAssign4
         {
             int nbrOfDecks = noOfDecks;
             int nbrOfPlayers = noOfPlayers;
-            dealer = new Dealer("Dealer", 0);
+            dealer = new Dealer("Dealer");
             dealer.DealerIsDone += dealer_DealerIsDone;
 
 
@@ -173,7 +178,7 @@ namespace WpfBlackJackAssign4
                         //check if player name is unique
                         //else MessageBox.Show("Player name is already taken, please enter a new one");
                     }
-                    Players.Add(new Player(playerName, i + 1));
+                    Players.Add(new Player(playerName));
                 }
                 Players.ElementAt(i).hand = hand;
                 DonePlayers[i] = false;
@@ -210,6 +215,7 @@ namespace WpfBlackJackAssign4
                 hitButton.IsEnabled = true;
                 standButton.IsEnabled = true;
                 shuffleButton.IsEnabled = true;
+                betButton.IsEnabled = true;
             }
 
             if (gameState == GameState.WAIT)
@@ -234,6 +240,9 @@ namespace WpfBlackJackAssign4
             playerIdTextBlock.Text = (currentPlayer + 1).ToString();
             playerScoreTextBlock.Text = Players.ElementAt(currentPlayer).hand.Score.ToString();
             dealerScoreTextBlock.Text = dealer.hand.Score.ToString();
+            currencyAmountNbrTextBlock.Text = Players.ElementAt(currentPlayer).funds.ToString();
+
+
             //ADD STUFF
             //currencyAmountNbrTextBlock.Text = get moneyamount from bank
         }
@@ -275,42 +284,46 @@ namespace WpfBlackJackAssign4
             {
                 newTurnButton.IsEnabled = true;
             }
+
         }
 
         public void calculateResult()
         {
-            if (dealer.IsThick)
+            for (int i = 0; i < Players.Count; i++)
             {
-                foreach (Player p in Players)
+                Player p = Players.ElementAt(i);
+                if (dealer.IsThick)
                 {
-                    if (p.IsThick)
                     {
-                        p.losses++;
-                        MessageBox.Show(p.PlayerID + " : " + p.Name + " lost...");
-                    }
-                    else
-                    {
-                        p.wins++;
-                        MessageBox.Show(p.PlayerID + " : " + p.Name + " Won!");
+                        if (p.IsThick)
+                        {
+                            p.AddLoss();
+                            MessageBox.Show(p.PlayerID + " : " + p.Name + " lost " + Bets.ElementAt(i) + ".");
+                        }
+                        else
+                        {
+                            p.AddWin();
+                            p.ChangeFunds(Bets.ElementAt(i) * 2);
+                            MessageBox.Show(p.PlayerID + " : " + p.Name + " Won " + Bets.ElementAt(i) + "!");
+                        }
                     }
                 }
-            }
-            else
-            {
-                foreach (Player p in Players)
+                else
                 {
                     if (p.IsThick || p.hand.Score <= dealer.hand.Score)
                     {
-                        p.losses++;
-                        MessageBox.Show(p.PlayerID + " : " + p.Name + " lost...");
+                        p.AddLoss();
+                        MessageBox.Show(p.PlayerID + " : " + p.Name + " lost " + Bets.ElementAt(i) + ".");
                     }
                     else
                     {
-                        p.wins++;
-                        MessageBox.Show(p.PlayerID + " : " + p.Name + " Won!");
+                        p.AddWin();
+                        p.ChangeFunds(Bets.ElementAt(i) * 2);
+                        MessageBox.Show(p.PlayerID + " : " + p.Name + " Won " + Bets.ElementAt(i) + "!");
                     }
                 }
             }
+
         }
 
         private void firstRound()
@@ -336,11 +349,23 @@ namespace WpfBlackJackAssign4
         {
             try
             {
-                int betAmount = Int32.Parse(amountNbrTextBox.Text);
+                if (Int32.Parse(amountNbrTextBox.Text) <= Players.ElementAt(currentPlayer).funds)
+                {
+                    Bets[currentPlayer] = (Int32.Parse(amountNbrTextBox.Text));
+                    Players.ElementAt(currentPlayer).ChangeFunds(Bets.ElementAt(currentPlayer) * -1);
+                    currencyAmountNbrTextBlock.Text = Players.ElementAt(currentPlayer).funds.ToString();
+                    betButton.IsEnabled = false;
+                    amountNbrTextBox.IsReadOnly = true;
+                    BetAmount.Text = "Current bet: ";
+                }
+                else
+                {
+                    MessageBox.Show("You can only bet an amount you can cover with your funds.");
+                }
             }
             catch (Exception)
             {
-                MessageBox.Show("Please enter valid digits");
+                MessageBox.Show("Please enter valid digits.");
             }
 
             //call on bet functionality in db dll

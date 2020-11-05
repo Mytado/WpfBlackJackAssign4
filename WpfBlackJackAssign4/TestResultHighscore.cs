@@ -11,9 +11,9 @@ namespace WpfBlackJackAssign4
     public class TestResultHighscore
     {
         public string Id { get; set; }
-        public string Wins { get; set; }
-        public string Losses { get; set; }
+        public int Wins { get; set; }
+        public int Losses { get; set; }
         public string Name { get; set; }
-        public int BankedAmount { get; set; }
+        public int Funds { get; set; }
     }
 }

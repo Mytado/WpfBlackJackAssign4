@@ -70,7 +70,7 @@
         <TextBlock x:Name="playerIdTextBlock" Grid.Column="7" Grid.Row="13" FontSize="22"/>
         <TextBlock Grid.Column="6" Grid.Row="14" FontSize="22" Text="Score: " Margin="5"/>
         <TextBlock x:Name="playerScoreTextBlock" Grid.Column="7" Grid.Row="14" FontSize="22"/>
-        <TextBlock Grid.Column="9" Grid.Row="15" FontSize="22" Text="Amount to bet: " 
+        <TextBlock x:Name="BetAmount" Grid.Column="9" Grid.Row="15" FontSize="22" Text="Amount to bet: " 
                    Margin="5"/>
         <TextBlock Grid.Column="9" Grid.Row="16" FontSize="22" Text="Amount in bank: " 
                    Margin="5"/>
@@ -80,7 +80,7 @@
 
 
         <!-- all text boxes-->
-        <TextBox x:Name="amountNbrTextBox" Grid.Column="10" Grid.Row="15" Width="150" Margin="5"/>
+        <TextBox x:Name="amountNbrTextBox" Grid.Column="10" Grid.Row="15" Width="150" Margin="5" Text="0"/>
 
         <!-- all buttons-->
         <Button x:Name="highscoreButton" Content="Highscore"
