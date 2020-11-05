@@ -49,17 +49,14 @@ namespace WpfBlackJackAssign4
             Console.WriteLine("Number of players: " + Players.Count);
             foreach (Player p in Players)
             {
-                if (p.Name != "Dealer")
+                testHigshscoreList.Add(new TestResultHighscore
                 {
-                    testHigshscoreList.Add(new TestResultHighscore
-                    {
-                        Id = p.PlayerID.ToString(),
-                        Name = p.Name,
-                        Wins = p.wins,
-                        Losses = p.losses,
-                        Funds = p.funds
-                    }); ;
-                }
+                    Id = p.PlayerID.ToString(),
+                    Name = p.Name,
+                    Wins = p.wins,
+                    Losses = p.losses,
+                    Funds = p.funds
+                }); ;
             }
 
             this.HighscoreList.ItemsSource = testHigshscoreList;

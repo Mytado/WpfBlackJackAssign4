@@ -18,17 +18,13 @@ namespace WpfBlackJackAssign4
     {
         private GameState gameState;
         private int currentPlayer;
-        //private List<string> playerList = new List<string>();
         private List<Player> Players = new List<Player>();
         private int[] Bets;
         private bool[] DonePlayers;
         private Dealer dealer;
         private Deck CardDeck;
-        private bool DealerIsDone = false;
-
         private int noOfPlayers;
         private int noOfDecks;
-
         private Image[] playerCardImages;
         private Image[] dealerCardImages;
 
@@ -41,7 +37,6 @@ namespace WpfBlackJackAssign4
 
         private void newGameButton_Click(object sender, RoutedEventArgs e)
         {
-
             playerIdTextBlock.Text = "";
             playerScoreTextBlock.Text = "";
             deckTextBlock.Text = "";
@@ -52,11 +47,6 @@ namespace WpfBlackJackAssign4
             noOfPlayers = Int32.Parse(newGameWindow.playerNbrText.Text);
             noOfDecks = Int32.Parse(newGameWindow.deckNbrText.Text);
             setupGame(true); //refine, ersätt med data från backend?
-        }
-
-        private void updatePlayerRound(string playerId)
-        {
-            playerIdTextBlock.Text = playerId;
         }
 
         private void shuffleButton_Click(object sender, RoutedEventArgs e)
@@ -111,7 +101,6 @@ namespace WpfBlackJackAssign4
                 amountNbrTextBox.Text = "0";
                 BetAmount.Text = "Amount to bet: ";
 
-
                 currentPlayer++;
                 hitButton.IsEnabled = true;
                 standButton.IsEnabled = true;
@@ -155,7 +144,6 @@ namespace WpfBlackJackAssign4
             dealer = new Dealer("Dealer");
             dealer.DealerIsDone += dealer_DealerIsDone;
 
-
             CardDeck = new Deck(nbrOfDecks);
             DonePlayers = new bool[nbrOfPlayers];
 
@@ -179,8 +167,6 @@ namespace WpfBlackJackAssign4
                     while (playerName.Equals(""))
                     {
                         playerName = Interaction.InputBox("Please submit a name for player " + (i + 1).ToString() + ".", "Player" + (i + 1).ToString() + " name", "Player " + (i + 1).ToString());
-                        //check if player name is unique
-                        //else MessageBox.Show("Player name is already taken, please enter a new one");
                     }
                     Players.Add(new Player(playerName));
                 }
@@ -207,7 +193,6 @@ namespace WpfBlackJackAssign4
             dealerCardImages[4] = CardL5;
 
             gameState = GameState.PLAY;
-            DealerIsDone = false;
             enableButtons();
             firstRound();
         }
@@ -236,7 +221,6 @@ namespace WpfBlackJackAssign4
             BitmapImage[] playerImages = Players.ElementAt(currentPlayer).hand.GetBitmapImages();
             BitmapImage[] dealerImages = dealer.hand.GetBitmapImages();
 
-            //set up dealers cards
             for (int i = 0; i < 5; i++)
             {
                 playerCardImages[i].Source = playerImages[i];
@@ -246,10 +230,6 @@ namespace WpfBlackJackAssign4
             playerScoreTextBlock.Text = Players.ElementAt(currentPlayer).hand.Score.ToString();
             dealerScoreTextBlock.Text = dealer.hand.Score.ToString();
             currencyAmountNbrTextBlock.Text = Players.ElementAt(currentPlayer).funds.ToString();
-
-
-            //ADD STUFF
-            //currencyAmountNbrTextBlock.Text = get moneyamount from bank
         }
 
         private void UpdateGame()
@@ -289,7 +269,6 @@ namespace WpfBlackJackAssign4
             {
                 newTurnButton.IsEnabled = true;
             }
-
         }
 
         public void calculateResult()
@@ -328,7 +307,6 @@ namespace WpfBlackJackAssign4
                     }
                 }
             }
-
         }
 
         private void firstRound()
@@ -372,8 +350,6 @@ namespace WpfBlackJackAssign4
             {
                 MessageBox.Show("Please enter valid digits.");
             }
-
-            //call on bet functionality in db dll
         }
     }
 }
