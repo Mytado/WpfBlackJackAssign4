@@ -51,7 +51,6 @@ namespace WpfBlackJackAssign4
             newGameWindow.ShowDialog();
             noOfPlayers = Int32.Parse(newGameWindow.playerNbrText.Text);
             noOfDecks = Int32.Parse(newGameWindow.deckNbrText.Text);
-            Bets = new int[noOfPlayers];
             setupGame(true); //refine, ersätt med data från backend?
         }
 
@@ -146,8 +145,13 @@ namespace WpfBlackJackAssign4
 
         private void setupGame(bool newGame)
         {
+            amountNbrTextBox.Text = "0";
+            BetAmount.Text = "Amount to bet: ";
+            amountNbrTextBox.IsEnabled = true;
+            amountNbrTextBox.IsReadOnly = false;
             int nbrOfDecks = noOfDecks;
             int nbrOfPlayers = noOfPlayers;
+            Bets = new int[noOfPlayers];
             dealer = new Dealer("Dealer");
             dealer.DealerIsDone += dealer_DealerIsDone;
 
@@ -213,6 +217,7 @@ namespace WpfBlackJackAssign4
             if (gameState == GameState.PLAY)
             {
                 hitButton.IsEnabled = true;
+                amountNbrTextBox.IsEnabled = true;
                 standButton.IsEnabled = true;
                 shuffleButton.IsEnabled = true;
                 betButton.IsEnabled = true;
